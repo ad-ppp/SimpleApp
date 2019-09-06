@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.xhb.simpleapp"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 101
+        versionName "1.0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        debug {
+            def appDrawable = manifestPlaceholders.get('applicationLabel')
+            println "app drawable $appDrawable"
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+
+    flavorDimensions "color"
+
+    productFlavors {
+        entrance_prepare_ceping {
+            manifestPlaceholders = ['applicationLabel': '@mipmap/ic_launcher']
+            resValue 'string', 'app_name', '入学准备测评'
+            buildConfigField "String[]", "URL_ARRAY" ,
+                    "{" +
+                        "\"https://ceping-test.xiaoheiban.cn/question_bank/html/load.html?exam_id=\","+
+                        "\"https://ceping.xiaoheiban.cn/question_bank/html/load.html?exam_id=\","+
+                        "\"https://ceping-test.xiaoheiban.cn/entrance-assessment?exam_id=\","+
+                        "\"https://ceping.xiaoheiban.cn/entrance-assessment?exam_id=\""+
+                    "}"
+        }
+
+        low_gradle_ceping {
+            applicationIdSuffix ".grade"
+            manifestPlaceholders = ['applicationLabel': '@mipmap/ic_launcher2']
+            resValue 'string', 'app_name', '低年级综合测评'
+            buildConfigField "String[]", "URL_ARRAY" ,
+                    "{" +
+                        "\"https://ceping-test.xiaoheiban.cn/primary-school-assessment\","+
+                        "\"https://ceping.xiaoheiban.cn/primary-school-assessment \""+
+                    "}"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+//    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
+//    implementation 'com.github.lzyzsd:jsbridge:1.0.4'
+    implementation project(':qrscanner')
+    implementation project(':xhbwebview')
+}

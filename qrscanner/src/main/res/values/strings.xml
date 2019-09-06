@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QRScanner</string>
+    <string name="flash_light_open">轻点照亮</string>
+    <string name="flash_light_close">轻点关闭</string>
+</resources>
