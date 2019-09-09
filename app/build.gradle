@@ -55,7 +55,7 @@ android {
             buildConfigField "String[]", "URL_ARRAY" ,
                     "{" +
                         "\"https://ceping-test.xiaoheiban.cn/primary-school-assessment\","+
-                        "\"https://ceping.xiaoheiban.cn/primary-school-assessment \""+
+                        "\"https://ceping.xiaoheiban.cn/primary-school-assessment\""+
                     "}"
         }
     }
