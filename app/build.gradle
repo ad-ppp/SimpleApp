@@ -58,6 +58,16 @@ android {
                         "\"https://ceping.xiaoheiban.cn/primary-school-assessment\""+
                     "}"
         }
+
+        self_play {
+            applicationIdSuffix ".play"
+            manifestPlaceholders = ['applicationLabel': '@mipmap/ic_launcher2']
+            resValue 'string', 'app_name', 'webview play'
+            buildConfigField "String[]", "URL_ARRAY" ,
+                    "{" +
+                            "\"null\","+
+                            "}"
+        }
     }
 }
 

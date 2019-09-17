@@ -104,6 +104,11 @@ class QRActivity : AppCompatActivity(), ScannerView.OnScanListener {
     private fun onScanSuccess(result: String) {
         vibrate()
         Log.d("QRActivity", "onScanSuccess:$result")
+        if (BuildConfig.URL_ARRAY.size == 1 && BuildConfig.URL_ARRAY[0] == "null"){
+            WebActivity.launch(this, result)
+            return
+        }
+
         for (s in BuildConfig.URL_ARRAY) {
             if (result.contains(s)) {
                 WebActivity.launch(this, result)
