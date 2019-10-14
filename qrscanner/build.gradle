@@ -16,8 +16,6 @@ android {
 
     }
 
-    flavorDimensions "color"
-
     buildTypes {
         release {
             minifyEnabled false

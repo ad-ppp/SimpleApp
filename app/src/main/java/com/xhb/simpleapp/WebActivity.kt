@@ -40,7 +40,6 @@ class WebActivity : AppCompatActivity(), AdvancedWebView.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
         StatusBarCompat.translucentStatusBar(this, false, false)
-//        window.addFlags(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
 
         url = intent.getStringExtra(KEY_URL)
 

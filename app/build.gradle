@@ -10,8 +10,8 @@ android {
         applicationId "com.xhb.simpleapp"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 101
-        versionName "1.0.1"
+        versionCode 102
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -39,33 +39,45 @@ android {
         entrance_prepare_ceping {
             manifestPlaceholders = ['applicationLabel': '@mipmap/ic_launcher']
             resValue 'string', 'app_name', '入学准备测评'
-            buildConfigField "String[]", "URL_ARRAY" ,
+            buildConfigField "String[]", "URL_CONTAINS" ,
                     "{" +
-                        "\"https://ceping-test.xiaoheiban.cn/question_bank/html/load.html?exam_id=\","+
-                        "\"https://ceping.xiaoheiban.cn/question_bank/html/load.html?exam_id=\","+
-                        "\"https://ceping-test.xiaoheiban.cn/entrance-assessment?exam_id=\","+
-                        "\"https://ceping.xiaoheiban.cn/entrance-assessment?exam_id=\""+
-                    "}"
+                            "\"https://ceping.\","+
+                            "\"https://ceping-test.\","+
+                            "\":5500\""+
+                            "}"
         }
 
         low_gradle_ceping {
             applicationIdSuffix ".grade"
             manifestPlaceholders = ['applicationLabel': '@mipmap/ic_launcher2']
             resValue 'string', 'app_name', '低年级综合测评'
-            buildConfigField "String[]", "URL_ARRAY" ,
+            buildConfigField "String[]", "URL_CONTAINS" ,
                     "{" +
-                        "\"https://ceping-test.xiaoheiban.cn/primary-school-assessment\","+
-                        "\"https://ceping.xiaoheiban.cn/primary-school-assessment\""+
-                    "}"
+                            "\"https://ceping.\","+
+                            "\"https://ceping-test.\","+
+                            "\":5500\""+
+                            "}"
+        }
+
+        combination {
+            applicationIdSuffix ".combination"
+            manifestPlaceholders = ['applicationLabel': '@mipmap/ic_launcher3']
+            resValue 'string', 'app_name', '晓测评'
+            buildConfigField "String[]", "URL_CONTAINS" ,
+                    "{" +
+                            "\"https://ceping.\","+
+                            "\"https://ceping-test.\","+
+                            "\":5500\""+
+                            "}"
         }
 
         self_play {
             applicationIdSuffix ".play"
             manifestPlaceholders = ['applicationLabel': '@mipmap/ic_launcher2']
             resValue 'string', 'app_name', 'webview play'
-            buildConfigField "String[]", "URL_ARRAY" ,
+            buildConfigField "String[]", "URL_CONTAINS" ,
                     "{" +
-                            "\"null\","+
+                            "\"null\""+
                             "}"
         }
     }
